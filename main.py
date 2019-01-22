@@ -17,3 +17,7 @@ if not os.path.exists("/data/in/tables/input.csv"):
 files = {'file': open("/data/in/tables/input.csv", "rb")}
 
 r1 = requests.post(endpoint,headers=headers,files=files)
+
+if r1.status_code > 200:
+    raise Exception("ERROR:",r1.status_code)
+
