@@ -18,6 +18,6 @@ files = {'file': open("/data/in/tables/input.csv", "rb")}
 
 r1 = requests.post(endpoint,headers=headers,files=files)
 
-if r1.status_code > 200:
+if r1.status_code != 200:
     raise Exception("ERROR:",r1.status_code)
 
