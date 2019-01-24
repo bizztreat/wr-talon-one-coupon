@@ -17,6 +17,7 @@ Represents collected raw coupon data in format below:
 ["value","expirydate","startdate","recipientintegrationid","limitval","attributes"]
 
 Note that only the **value** column is required. All others are optional. Limits default to 1 if they are not provided.
+The structure of a coupon import CSV file is using ISO8601 for dates. 
 
 - value: Id of the specific coupon, Id is unique
 - expirydate: Timestamp YYYY-MM-DDTHH:mm:ssZ
