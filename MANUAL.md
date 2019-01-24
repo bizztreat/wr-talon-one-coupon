@@ -25,7 +25,7 @@ Note that of these columns, only the **value** column is required. All others ar
 - limitval: is integer
 - attributes: "{""Category"": ""10_off"", ""Month"": ""May""}"
 
-"Input table must be named \"input.csv\""
+Input table must be named \"input.csv\"
 
 ## Configuration
 
