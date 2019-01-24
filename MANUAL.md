@@ -2,7 +2,7 @@
 
 ## What It Does
 
-This app writer measured data objects to Talon.one API.
+This writer sends measured data objects to Talon.one system.
 
 https://developers.talon.one/Tutorials-and-Guides/How-do-I-transfer-my-existing-coupon-codes
 
@@ -12,11 +12,11 @@ https://developers.talon.one/Tutorials-and-Guides/How-do-I-transfer-my-existing-
 
 #### input.csv
 
-Represents collected the raw coupon data
+Represents collected raw coupon data in format below:
 
 ["value","expirydate","startdate","recipientintegrationid","limitval","attributes"]
 
-Note that of these columns, only the **value** column is required. All others are optional. Limits default to 1 if they are not provided.
+Note that only the **value** column is required. All others are optional. Limits default to 1 if they are not provided.
 
 - value: Id of the specific coupon, Id is unique
 - expirydate: Timestamp YYYY-MM-DDTHH:mm:ssZ
