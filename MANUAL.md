@@ -23,8 +23,8 @@ The structure of a coupon import CSV file is using ISO8601 for dates.
 - expirydate: Timestamp YYYY-MM-DDTHH:mm:ssZ
 - startdate: Timestamp YYYY-MM-DDTHH:mm:ssZ
 - recipientintegrationid: customer Id
-- limitval: is integer
-- attributes: "{""Category"": ""10_off"", ""Month"": ""May""}"
+- limitval: is integer, default 1
+- attributes: format example: "{""Key1"": ""value"", ""Key2"": ""value""}"
 
 Input table must be named \"input.csv\"
 
