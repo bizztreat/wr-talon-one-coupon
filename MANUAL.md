@@ -26,7 +26,7 @@ The structure of a coupon import CSV file is using ISO8601 for dates.
 - limitval: is integer, default 1
 - attributes: format example: "{""Key1"": ""value"", ""Key2"": ""value""}"
 
-Input table must be named \"input.csv\"
+**Input table must be named \"input.csv\"**
 
 ## Configuration
 
