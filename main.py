@@ -5,14 +5,19 @@ import csv
 import json
 import os
 
+conf_path = ("/data/config.json" if os.path.exists("/data/config.json") else ("/code/config.json" if os.path.exists("/code/config.json") else "config.json"))
+
+
+if (not os.path.exists(conf_path)):
+	print("Cannot run without configuration")
+	sys.exit(0)
+
+
 with open("/data/config.json","r") as conf_file:
     conf = json.load(conf_file)["parameters"]
 
 endpoint = "https://{0}.talon.one/v1/applications/{1}/campaigns/{2}/import_coupons".format(conf["project"], conf["application-id"], conf["campaign-id"])
 headers = {"authorization":"Bearer {0}".format(conf["#bearer"])}
-
-if not os.path.exists("/data/config.json"):
-    raise Exception ("Missed configuration parametrs: project, application-id, campaign-id, bearer")
 
 if not os.path.exists("/data/in/tables/input.csv"):
     raise Exception("Input table must be named \"input.csv\"")
