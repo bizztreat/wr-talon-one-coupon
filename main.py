@@ -12,9 +12,10 @@ if (not os.path.exists(conf_path)):
 	print("Cannot run without configuration")
 	sys.exit(0)
 
-
 with open("/data/config.json","r") as conf_file:
     conf = json.load(conf_file)["parameters"]
+
+print(conf.keys())
 
 endpoint = "https://{0}.talon.one/v1/applications/{1}/campaigns/{2}/import_coupons".format(conf["project"], conf["application-id"], conf["campaign-id"])
 headers = {"authorization":"Bearer {0}".format(conf["#bearer"])}
