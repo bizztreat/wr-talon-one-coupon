@@ -15,6 +15,16 @@ if (not os.path.exists(conf_path)):
 with open("/data/config.json","r") as conf_file:
     conf = json.load(conf_file)["parameters"]
 
+if not has_key(conf,"#bearer"):
+   raise Exception("Missing required parameter \'#bearer\'")
+if not has_key(conf,"project"):
+   raise Exception("Missing required parameter \'project\'")
+if not has_key(conf,"application-id"):
+   raise Exception("Missing required parameter \'application-id\'")
+if not has_key(conf,"campaign-id"):
+   raise Exception("Missing required parameter \'campaign-id\'")
+
+
 print(conf.keys())
 
 endpoint = "https://{0}.talon.one/v1/applications/{1}/campaigns/{2}/import_coupons".format(conf["project"], conf["application-id"], conf["campaign-id"])
