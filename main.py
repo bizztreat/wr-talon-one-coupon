@@ -15,13 +15,13 @@ if (not os.path.exists(conf_path)):
 with open("/data/config.json","r") as conf_file:
     conf = json.load(conf_file)["parameters"]
 
-if not conf.has_key("#bearer"):
+if "#bearer" not in conf:
    raise Exception("Missing required parameter \'#bearer\'")
-if not conf.has_key("project"):
+if "project" not in conf:
    raise Exception("Missing required parameter \'project\'")
-if not conf.has_key("application-id"):
+if "application-id" not in conf:
    raise Exception("Missing required parameter \'application-id\'")
-if not conf.has_key("campaign-id"):
+if "campaign-id" not in conf:
    raise Exception("Missing required parameter \'campaign-id\'")
 
 
