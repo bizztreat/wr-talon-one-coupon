@@ -4,6 +4,8 @@ import requests
 import csv
 import json
 import os
+import sys
+import traceback
 
 conf_path = ("/data/config.json" if os.path.exists("/data/config.json") else ("/code/config.json" if os.path.exists("/code/config.json") else "config.json"))
 
@@ -16,13 +18,17 @@ with open("/data/config.json","r") as conf_file:
     conf = json.load(conf_file)["parameters"]
 
 if "#bearer" not in conf:
-   raise Exception("Missing required parameter \'#bearer\'")
+   print("Missing required parameter \'#bearer\'", file=sys.stderr)
+   sys.exit(1)
 if "project" not in conf:
-   raise Exception("Missing required parameter \'project\'")
+   print("Missing required parameter \'project\'", file=sys.stderr)
+   sys.exit(1)
 if "application-id" not in conf:
-   raise Exception("Missing required parameter \'application-id\'")
+   print("Missing required parameter \'application-id\'", file=sys.stderr)
+   sys.exit(1)
 if "campaign-id" not in conf:
-   raise Exception("Missing required parameter \'campaign-id\'")
+   print("Missing required parameter \'campaign-id\'", file=sys.stderr)
+   sys.exit(1)
 
 
 print(conf.keys())
@@ -38,5 +44,6 @@ files = {'file': open("/data/in/tables/input.csv", "rb")}
 r1 = requests.post(endpoint,headers=headers,files=files)
 
 if r1.status_code != 200:
-    raise Exception("ERROR:",r1.status_code, r1.text)
+   print("ERROR:" ,r1.status_code, r1.text file=sys.stderr)
+   sys.exit(1)
 
