@@ -31,13 +31,12 @@ if "campaign-id" not in conf:
    sys.exit(1)
 
 
-print(conf.keys())
-
 endpoint = "https://{0}.talon.one/v1/applications/{1}/campaigns/{2}/import_coupons".format(conf["project"], conf["application-id"], conf["campaign-id"])
 headers = {"authorization":"Bearer {0}".format(conf["#bearer"])}
 
 if not os.path.exists("/data/in/tables/input.csv"):
-    raise Exception("Input table must be named \"input.csv\"")
+   print("Input table must be named \"input.csv\"", file=sys.stderr)
+   sys.exit(1)
 
 files = {'file': open("/data/in/tables/input.csv", "rb")}
 
