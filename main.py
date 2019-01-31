@@ -44,6 +44,10 @@ files = {'file': open("/data/in/tables/input.csv", "rb")}
 r1 = requests.post(endpoint,headers=headers,files=files)
 
 if r1.status_code != 200:
+<<<<<<< HEAD
    print("ERROR:", r1.text, file=sys.stderr)
+=======
+   print("ERROR:" ,r1.status_code, r1.text file=sys.stderr)
+>>>>>>> parent of db96938... Update main.py
    sys.exit(1)
 
