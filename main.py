@@ -40,9 +40,23 @@ if not os.path.exists("/data/in/tables/input.csv"):
 
 files = {'file': open("/data/in/tables/input.csv", "rb")}
 
-r1 = requests.post(endpoint,headers=headers,files=files)
-
-if r1.status_code != 200:
-   print("ERROR:" ,r1.text, file=sys.stderr)
-   sys.exit(1)
+try:
+    r = requests.post(endpoint,headers=headers,files=files,timeout=3)
+    r.raise_for_status()
+except requests.exceptions.HTTPError as errh:
+    print ("Http Error:",errh,file=sys.stderr)
+    traceback.print_exc(file=sys.stderr)
+    sys.exit(2)
+except requests.exceptions.ConnectionError as errc:
+    print ("Error Connecting:",errc,file=sys.stderr)
+    traceback.print_exc(file=sys.stderr)
+    sys.exit(2)
+except requests.exceptions.Timeout as errt:
+    print ("Timeout Error:",errt,file=sys.stderr)
+    traceback.print_exc(file=sys.stderr)
+    sys.exit(2)
+except requests.exceptions.RequestException as err:
+    print ("OOps: Something Else",err,file=sys.stderr)
+    traceback.print_exc(file=sys.stderr)
+    sys.exit(2)
 
