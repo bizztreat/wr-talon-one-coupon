@@ -50,11 +50,11 @@ except requests.exceptions.HTTPError as errh:
 except requests.exceptions.ConnectionError as errc:
     print ("Error Connecting:",errc,file=sys.stderr)
     traceback.print_exc(file=sys.stderr)
-    sys.exit(2)
+    sys.exit(1)
 except requests.exceptions.Timeout as errt:
     print ("Timeout Error:",errt,file=sys.stderr)
     traceback.print_exc(file=sys.stderr)
-    sys.exit(2)
+    sys.exit(1)
 except requests.exceptions.RequestException as err:
     print ("OOps: Something Else",err,file=sys.stderr)
     traceback.print_exc(file=sys.stderr)
